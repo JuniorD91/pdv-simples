@@ -1,10 +1,12 @@
 import React, { Component } from 'react';
+import HeaderTemplate from './components/template/HeaderTemplate';
+
 
 class App extends Component {
   render() {
     return (
       <div className="App">
-        <h1>Bem vindo(a), Sistema de PDV - SIMPLES</h1>
+        <HeaderTemplate/>
       </div>
     );
   }
