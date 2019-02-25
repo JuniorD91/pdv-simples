@@ -10,7 +10,7 @@ import {
 
 const Rodape = () => (
     <Footer style={{ textAlign: 'center' }}>
-                    SEAP ©2019 Nucleo de Desenvolvimento de sistemas
+                    SEAP ©2019 Sistema de PDV - Desenvolvimento por Francisco Junior
     </Footer>
 )
 

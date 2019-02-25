@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
-import HeaderTemplate from './components/template/HeaderTemplate';
 
+import Routes from './components/Routes';
 
 class App extends Component {
   render() {
     return (
       <div className="App">
-        <HeaderTemplate/>
+        <Routes />
       </div>
     );
   }

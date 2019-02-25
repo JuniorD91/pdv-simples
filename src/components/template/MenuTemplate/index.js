@@ -42,20 +42,14 @@ export default class MenuTemplate extends Component {
                     openKeys={this.state.openKeys}
                     style={{ height: '100%' }}
                     >
-                        <SubMenu key="sub1" title={<span><Icon type="user" />Cliente</span>} >
+                        <SubMenu key="sub1" title={<span><Icon type="user" />Cadastro</span>} >
                             <Menu.Item key="1">
-                                {/* <Link to="/cadastrar-cliente">Cadastro</Link> */}
-                            </Menu.Item>
-                            <Menu.Item key="2">
-                                {/* <Link to="/buscar-cliente">Buscar</Link> */}
+                                <Link to="/cadastrar-cliente">Cadastro</Link>
                             </Menu.Item>
                         </SubMenu>
-                        <SubMenu key="sub2" title={<span><Icon type="laptop" />Equipamento</span>}>
+                        <SubMenu key="sub2" title={<span><Icon type="laptop" />Mercadoria</span>}>
                             <Menu.Item key="3">
-                                {/* <Link to="/cadastrar-equipamento">Cadastro</Link> */}
-                            </Menu.Item>
-                            <Menu.Item key="4">
-                                {/* <Link to="/buscar-equipamento">Buscar</Link> */}
+                                <Link to="/venda-produto">Venda</Link>
                             </Menu.Item>
                         </SubMenu>
                 </Menu>
