@@ -24,7 +24,7 @@ const Routes = () => (
                <Content style={{ padding: '0 50px' }}>
                     <Breadcrumb style={{ margin: '16px 0' }}>
                     </Breadcrumb>
-                    <Layout style={{ padding: '24px 0', background: '#fff' }}>
+                    <Layout style={{ padding: '24px 0', background: '#fff'}}>
                         <MenuTemplate />
                         <Content style={{ padding: '0 24px', minHeight: 500 }}>                   
                                 <Switch>
