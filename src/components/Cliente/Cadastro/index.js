@@ -5,16 +5,16 @@ const Step = Steps.Step;
 
 const steps = [{
     title: 'Dados Pessoais',
-    content: 'First-content',
+    content: 'dados-pessoais-content',
   }, {
     title: 'Filiação',
-    content: 'Second-content',
+    content: 'filiacao-Second-content',
   }, {
     title: 'Enderecço',
-    content: 'Last-content',
+    content: 'endereco-Last-content',
   }, {
     title: 'Online',
-    content: 'Last-content',
+    content: 'online-Last-content',
   }];
 
 class CadastroCliente extends Component{
@@ -35,13 +35,24 @@ class CadastroCliente extends Component{
 
     render(){
         const { current } = this.state;
+
+        let contentStep = steps[current].content; 
+        let content;
+        
+        if(contentStep === 'dados-pessoais-content'){
+            content = <h1>Francisco</h1>
+        }
+
+        console.log(steps[current].content === 'dados-pessoais-content');
         return(
             <div>
                 <div>
                     <Steps current={current}>
                     {steps.map(item => <Step key={item.title} title={item.title} />)}
                     </Steps>
-                    <div className="steps-content">{steps[current].content}</div>
+                    <div className="steps-content">
+                        valor do content : {content}
+                    </div>
                     <div className="steps-action">
                         {
                             current < steps.length - 1
