@@ -1,5 +1,10 @@
 import React, { Component } from 'react';
-import { Steps, Button, message } from 'antd';
+import { Steps, Button, message, Input  } from 'antd';
+
+import DadosPessoais from '../Step/DadosPessoais';
+import Filiacao from '../Step/Filiacao';
+import Endereco from '../Step/Endereco'; 
+import Online from '../Step/Online';
 
 const Step = Steps.Step;
 
@@ -38,12 +43,17 @@ class CadastroCliente extends Component{
 
         let contentStep = steps[current].content; 
         let content;
-        
+
         if(contentStep === 'dados-pessoais-content'){
-            content = <h1>Francisco</h1>
+            content = <DadosPessoais />
+        }else if(contentStep === 'filiacao-Second-content'){
+            content = <Filiacao />
+        }else if(contentStep === 'endereco-Last-content'){
+            content = <Endereco />
+        }else if(contentStep === 'online-Last-content'){
+            content = <Online />
         }
 
-        console.log(steps[current].content === 'dados-pessoais-content');
         return(
             <div>
                 <div>
@@ -51,7 +61,7 @@ class CadastroCliente extends Component{
                     {steps.map(item => <Step key={item.title} title={item.title} />)}
                     </Steps>
                     <div className="steps-content">
-                        valor do content : {content}
+                        {content}
                     </div>
                     <div className="steps-action">
                         {
