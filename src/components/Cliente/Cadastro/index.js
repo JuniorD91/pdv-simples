@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Steps, Button, message, Input  } from 'antd';
+import { Steps, Button, message, Form } from 'antd';
 
 import DadosPessoais from '../Step/DadosPessoais';
 import Filiacao from '../Step/Filiacao';
@@ -55,36 +55,32 @@ class CadastroCliente extends Component{
         }
 
         return(
-            <div>
-                <div>
+            <Form layout="inline">
                     <Steps current={current}>
                     {steps.map(item => <Step key={item.title} title={item.title} />)}
                     </Steps>
-                    <div className="steps-content">
+                    <div className="steps-content" style={{paddingTop: 20}}>
                         {content}
                     </div>
                     <div className="steps-action">
                         {
                             current < steps.length - 1
-                            && <Button type="primary" onClick={() => this.next()}>Next</Button>
+                            && <Button type="primary" onClick={() => this.next()}>Próximo</Button>
                         }
                         {
                             current === steps.length - 1
-                            && <Button type="primary" onClick={() => message.success('Processing complete!')}>Done</Button>
+                            && <Button type="primary" onClick={() => message.success('Processing complete!')}>Fim</Button>
                         }
                         {
                             current > 0
                             && (
                             <Button style={{ marginLeft: 8 }} onClick={() => this.prev()}>
-                            Previous
+                            Anterior    
                             </Button>
                             )
                         }
                     </div>
-                </div>
-                
-            </div>
-            
+            </Form>
         )
     }
 }

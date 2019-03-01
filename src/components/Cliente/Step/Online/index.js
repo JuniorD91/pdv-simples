@@ -1,13 +1,13 @@
 import React, { Component } from 'react';
-import { Input } from 'antd';
+import { Input, Form } from 'antd';
 
 export default class Online extends Component{
     render(){
         return(
-            <div>
+            <Form.Item>
                 <Input placeholder="Email" />
                 <Input placeholder="Senha" />
-            </div>
+            </Form.Item>
         )
     }
 }

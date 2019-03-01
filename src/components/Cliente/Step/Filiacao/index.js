@@ -1,13 +1,14 @@
 import React, { Component } from 'react';
-import { Input } from 'antd';
+import { Input, Form } from 'antd';
+
 
 export default class Filiacao extends Component {
     render(){
         return(
-            <div>
+            <Form.Item>
                 <Input placeholder="Pai" />
                 <Input placeholder="Mãe" />
-            </div>
+            </Form.Item>
         )
     }
 }
