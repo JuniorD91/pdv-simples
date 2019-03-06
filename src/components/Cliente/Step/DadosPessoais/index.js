@@ -1,12 +1,62 @@
 import React, { Component } from 'react';
-import { Form, Input, DatePicker, Select } from 'antd';
+import { Form, Input, DatePicker, Select, Button } from 'antd';
 
 const Option = Select.Option;
 
 export default class DadosPessoais extends Component {
 
     state = {
-        signos : [
+        dadosPessoais : {
+           nome : '',
+           cpf : '',
+           rg : '',
+           dataNascimento : '',
+           signo : '',
+        }
+    }
+
+    _salvarDadosPessoais = () => {
+        console.log(this.state.dadosPessoais);
+    } 
+    
+    _changeName = (e) =>{
+        let nomeParam = e.target.value;
+        
+        this.setState(prevState => 
+            ({dadosPessoais : {...prevState.dadosPessoais, nome : nomeParam}})
+        )
+
+    }
+
+    _changeCPF = (e) =>{
+        let cpfParam = e.target.value;
+        this.setState(prevState => 
+            ({dadosPessoais : {...prevState.dadosPessoais, cpf : cpfParam}})
+        )
+    }
+
+    _changeRG = (e) =>{
+        let rgParam = e.target.value;
+        this.setState(prevState => 
+            ({dadosPessoais : {...prevState.dadosPessoais, rg : rgParam}})
+        )
+    }
+
+    _changeDataNascimento = (value, dateString) =>{
+        this.setState(prevState => 
+            ({dadosPessoais : {...prevState.dadosPessoais, dataNascimento : dateString}})
+        )
+    }
+
+    _changeSigno = (value) =>{
+        this.setState(prevState => 
+            ({dadosPessoais : {...prevState.dadosPessoais, signo : value}})
+        )
+     }
+
+    render(){
+
+        const signos = [
             {
                 id:1,
                 descricao : 'ÁRIES',
@@ -52,22 +102,34 @@ export default class DadosPessoais extends Component {
                 descricao : 'PEIXES',
             },
         ]
-    }
 
-
-    render(){
         return(
             <Form.Item>
-                <Input placeholder="Nome" />
-                <Input placeholder="CPF" />
-                <Input placeholder="RG" />
-                <DatePicker placeholder="Data de Nascimento" format="DD-MM-YYYY"/>
-                <Input placeholder="Signo" />
-                <Select>
-                    {this.state.signos.map((signo) =>
+                <Input placeholder="Nome" 
+                    value = {this.state.dadosPessoais.nome} 
+                    onChange={this._changeName}
+                />
+                
+                <Input placeholder="CPF" 
+                    value = {this.state.dadosPessoais.cpf}
+                    onChange={this._changeCPF}
+                />
+                
+                <Input placeholder="RG" 
+                    value = {this.state.dadosPessoais.rg}
+                    onChange={this._changeRG}/>
+                
+                <DatePicker placeholder="Data de Nascimento" 
+                    format="DD-MM-YYYY"
+                    onChange={this._changeDataNascimento}
+                    />
+                
+                <Select placeholder="Selecione" onChange={this._changeSigno}>
+                    {signos.map((signo) =>
                         <Option key={signo.id}>{signo.descricao}</Option>
                     )}
                 </Select>
+                <Button onClick={this._salvarDadosPessoais}>Teste</Button>
             </Form.Item>
         )
     }
