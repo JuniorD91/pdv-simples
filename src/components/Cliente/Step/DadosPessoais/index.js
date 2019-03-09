@@ -13,6 +13,8 @@ export default class DadosPessoais extends Component {
            dataNascimento : '',
            signo : '',
         }
+
+        
     }
 
     _salvarDadosPessoais = () => {
@@ -129,7 +131,7 @@ export default class DadosPessoais extends Component {
                         <Option key={signo.id}>{signo.descricao}</Option>
                     )}
                 </Select>
-                <Button onClick={this._salvarDadosPessoais}>Teste</Button>
+                <Button onClick={this._salvarDadosPessoais}>Salvar Dados</Button>
             </Form.Item>
         )
     }
