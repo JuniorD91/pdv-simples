@@ -57,7 +57,7 @@ class CadastroCliente extends Component{
         return(
             <Form layout="inline">
                     <Steps current={current}>
-                    {steps.map(item => <Step key={item.title} title={item.title} />)}
+                        {steps.map(item => <Step key={item.title} title={item.title} />)}
                     </Steps>
                     <div className="steps-content" style={{paddingTop: 20}}>
                         {content}

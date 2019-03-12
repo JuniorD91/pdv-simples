@@ -27,11 +27,11 @@ export default class DadosPessoais extends Component {
         this.setState(prevState => 
             ({dadosPessoais : {...prevState.dadosPessoais, nome : nomeParam}})
         )
-
     }
 
     _changeCPF = (e) =>{
         let cpfParam = e.target.value;
+
         this.setState(prevState => 
             ({dadosPessoais : {...prevState.dadosPessoais, cpf : cpfParam}})
         )
@@ -39,6 +39,7 @@ export default class DadosPessoais extends Component {
 
     _changeRG = (e) =>{
         let rgParam = e.target.value;
+        
         this.setState(prevState => 
             ({dadosPessoais : {...prevState.dadosPessoais, rg : rgParam}})
         )

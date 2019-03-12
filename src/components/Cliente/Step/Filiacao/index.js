@@ -25,7 +25,8 @@ export default class Filiacao extends Component {
         let nomePai = e.target.value;
 
         this.setState(prevState => 
-            ({filiacao : {...prevState.filiacao, pai : nomePai}}))
+            ({filiacao : {...prevState.filiacao, pai : nomePai}})
+            )
     }
 
     _salvarFiliacao = () =>{

@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Input, Form } from 'antd';
+import { Input, Form, Button } from 'antd';
 
 export default class Endereco extends Component{
 
@@ -9,36 +9,47 @@ export default class Endereco extends Component{
             descricao : '',
             numero : '',
             bairro : '',
-            cidade : '',
-            estado : ''
         }
     }
 
     _changeCep = (e) => {
+        let numberCep = e.target.value;
 
+        this.setState( prevState => 
+            ({endereco : {...prevState.endereco, cep : numberCep}})    
+        )
     }   
 
     _changeEndereco = (e) => {
+        let nameEndereco = e.target.value;
 
+        this.setState(prevState =>
+            ({endereco : {...prevState.endereco, descricao : nameEndereco}})
+        )
     }
 
     _changeNumero = (e) => {
+        let numberHome = e.target.value;
 
+        this.setState(prevState =>
+            ({endereco : {...prevState.endereco, numero : numberHome}})
+        )
     }
 
     _changeBairro = (e) => {
+        let nameBairro = e.target.value;
 
+        this.setState(prevState =>
+            ({endereco : {...prevState.endereco, bairro : nameBairro}})
+        )
     }
 
-    _changeCidade = (e) => {
-
-    }
-
-    _changeEstado = (e) => {
-
+    _onChangeSave = () => {
+        console.log('O valor do endereco : ',this.state.endereco);
     }
 
     render(){
+
         return (
             <Form.Item>
                 <Input 
@@ -58,11 +69,13 @@ export default class Endereco extends Component{
                     value={this.state.endereco.numero}
                     onChange={this._changeNumero}
                     />
-                    
+
                 <Input 
                     placeholder="Bairro" 
                     value={this.state.endereco.bairro}
                     onChange={this._changeBairro}/>
+
+                <Button onClick={this._onChangeSave}>Salvar Endereco</Button>
                 
             </Form.Item>
         )
