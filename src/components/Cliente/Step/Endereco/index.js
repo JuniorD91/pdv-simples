@@ -1,7 +1,12 @@
 import React, { Component } from 'react';
-import { Input, Form, Button } from 'antd';
+import { Input, Form } from 'antd';
 
-export default class Endereco extends Component{
+import { bindActionCreators } from 'redux';
+import { connect } from 'react-redux';
+
+import * as enderecoAction from '../../../../store/actions/enderecoAction';
+
+class Endereco extends Component{
 
     state = {
         endereco : {
@@ -13,39 +18,19 @@ export default class Endereco extends Component{
     }
 
     _changeCep = (e) => {
-        let numberCep = e.target.value;
-
-        this.setState( prevState => 
-            ({endereco : {...prevState.endereco, cep : numberCep}})    
-        )
+        this.props.handleCep(e.target.value);
     }   
 
     _changeEndereco = (e) => {
-        let nameEndereco = e.target.value;
-
-        this.setState(prevState =>
-            ({endereco : {...prevState.endereco, descricao : nameEndereco}})
-        )
+        this.props.handleEndereco(e.target.value);
     }
 
     _changeNumero = (e) => {
-        let numberHome = e.target.value;
-
-        this.setState(prevState =>
-            ({endereco : {...prevState.endereco, numero : numberHome}})
-        )
+        this.props.handleNumero(e.target.value);
     }
 
     _changeBairro = (e) => {
-        let nameBairro = e.target.value;
-
-        this.setState(prevState =>
-            ({endereco : {...prevState.endereco, bairro : nameBairro}})
-        )
-    }
-
-    _onChangeSave = () => {
-        console.log('O valor do endereco : ',this.state.endereco);
+        this.props.handleBairro(e.target.value);
     }
 
     render(){
@@ -54,30 +39,32 @@ export default class Endereco extends Component{
             <Form.Item>
                 <Input 
                     placeholder="CEP"
-                    value={this.state.endereco.cep} 
+                    value={this.props.endereco.cep} 
                     onChange={this._changeCep}
                     />
 
                 <Input 
                     placeholder="Endereco" 
-                    value={this.state.endereco.descricao}
+                    value={this.props.endereco.descricao}
                     onChange={this._changeEndereco}
                     />
 
                 <Input 
                     placeholder="Numero"
-                    value={this.state.endereco.numero}
+                    value={this.props.endereco.numero}
                     onChange={this._changeNumero}
                     />
 
                 <Input 
                     placeholder="Bairro" 
-                    value={this.state.endereco.bairro}
+                    value={this.props.endereco.bairro}
                     onChange={this._changeBairro}/>
 
-                <Button onClick={this._onChangeSave}>Salvar Endereco</Button>
-                
             </Form.Item>
         )
     }
 }
+
+const mapStateToProps = state => ({ endereco:state.endereco })
+const mapDispatchToProps = dispatch => bindActionCreators(enderecoAction,dispatch)
+export default connect (mapStateToProps,mapDispatchToProps)(Endereco)

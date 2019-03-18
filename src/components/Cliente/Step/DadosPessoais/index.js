@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
-import { Form, Input, DatePicker, Select, Button } from 'antd';
+import { Form, Input, DatePicker, Select } from 'antd';
 
 import { bindActionCreators } from 'redux';
-import * as dadosPessoaisAction from '../../../../store/actions';
+import * as dadosPessoaisAction from '../../../../store/actions/dadosPessoaisAction';
 import { connect } from 'react-redux';
 
 const Option = Select.Option;
@@ -56,10 +56,6 @@ const signos = [
 
 class DadosPessoais extends Component {
 
-    state = {
-        signo : '',
-    }
-
    componentDidMount(){
        if(this.props.signo !== ''){
             this.setState({signo : signos[this.props.signo]})
@@ -94,12 +90,6 @@ class DadosPessoais extends Component {
     }
 
     _changeSigno = (e) =>{
-        const signoSelecionado = signos[e];
-        this.setState(
-            {
-                signo : signoSelecionado
-            })
-
             this.props.changeSignoDadosPessoais(e)
         //this.setState(prevState => 
         //    ({dadosPessoais : {...prevState.dadosPessoais, signo : value}})
@@ -108,9 +98,9 @@ class DadosPessoais extends Component {
 
     render(){
         return(
-            <div>
             <Form.Item>
-                <Input placeholder="Nome" 
+                <Input 
+                    placeholder="Nome" 
                     value = {this.props.dadosPessoais.nome} 
                     onChange={this._changeName}
                 />
@@ -125,18 +115,16 @@ class DadosPessoais extends Component {
                     onChange={this._changeRG}/>
                     
                 <DatePicker placeholder="Data de Nascimento" 
-                    format="DD-MM-YYYY" value={this.props.dadosPessoais.dataNascimento}
+                    format="DD/MM/YYYY" value={this.props.dadosPessoais.dataNascimento}
                     onChange={this._changeDataNascimento}
                     />
                     
-                <Select onChange={this._changeSigno} value={this.props.dadosPessoais.signo}>
+                <Select placeholder="Selecione..." onChange={this._changeSigno} value={this.props.dadosPessoais.signo}>
                     {signos.map((signo) =>
                         <Option key={signo.id}>{signo.descricao}</Option>
                     )}
                 </Select>
-                    <Button onClick={this._salvarDadosPessoais}>Salvar Dados</Button>
             </Form.Item>
-            </div>
         )
     }
 }

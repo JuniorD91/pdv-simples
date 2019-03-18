@@ -1,36 +1,19 @@
 import React, { Component } from 'react';
-import { Input, Form, Button } from 'antd';
+import { Input, Form } from 'antd';
 
+import { bindActionCreators } from 'redux';
+import { connect } from 'react-redux';
 
-export default class Filiacao extends Component {
+import * as filiacaoAction from '../../../../store/actions/filiacaoAction';
 
-    state = {
-        filiacao :{
-            pai : '',
-            mae : '',
-        }
-    }
+class Filiacao extends Component {
 
     _changeMAE = (e) => {
-        let nomeMae = e.target.value;
-
-        this.setState(prevState =>
-            ({filiacao : {...prevState.filiacao, mae : nomeMae}})    
-        )
-        
+        this.props.handleMae(e.target.value)
     }
 
     _changePAI = (e) => {
-
-        let nomePai = e.target.value;
-
-        this.setState(prevState => 
-            ({filiacao : {...prevState.filiacao, pai : nomePai}})
-            )
-    }
-
-    _salvarFiliacao = () =>{
-        console.log('Save da Filiacao', this.state.filiacao);
+        this.props.handlePai(e.target.value)
     }
 
     render(){
@@ -40,18 +23,21 @@ export default class Filiacao extends Component {
                 <Input 
                     placeholder="Pai" 
                     onChange={this._changePAI}
-                    value={this.state.filiacao.pai}
+                    value={this.props.filial.pai}
                 />
 
                 <Input 
                     placeholder="Mãe"
                     onChange={this._changeMAE}
-                    value={this.state.filiacao.mae}
+                    value={this.props.filial.mae}
                 />
                                     
-                <Button onClick={this._salvarFiliacao}>Salvar Filiacao</Button>
-
             </Form.Item>
         )
     }
 }
+
+const mapStateToProps = state => ({ filial:state.filial, })
+const mapDispatchToProps = dispatch => bindActionCreators(filiacaoAction,dispatch)
+
+export default connect(mapStateToProps, mapDispatchToProps)(Filiacao)
