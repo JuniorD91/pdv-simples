@@ -56,16 +56,6 @@ const signos = [
 
 class DadosPessoais extends Component {
 
-   componentDidMount(){
-       if(this.props.signo !== ''){
-            this.setState({signo : signos[this.props.signo]})
-       }
-   }
-
-    _salvarDadosPessoais = () => {
-        //console.log(this.state.dadosPessoais);
-    } 
-    
     _changeName = (e) =>{
         let nomeParam = e.target.value;
         

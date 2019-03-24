@@ -44,12 +44,12 @@ export default class MenuTemplate extends Component {
                     >
                         <SubMenu key="sub1" title={<span><Icon type="user" />Cadastro</span>} >
                             <Menu.Item key="1">
-                                <Link to="/cadastrar-cliente">Cadastro</Link>
+                                <Link to="/cadastrar-cliente">Funcionário</Link>
                             </Menu.Item>
                         </SubMenu>
-                        <SubMenu key="sub2" title={<span><Icon type="laptop" />Mercadoria</span>}>
+                        <SubMenu key="sub2" title={<span><Icon type="laptop" />Listagem</span>}>
                             <Menu.Item key="3">
-                                <Link to="/venda-produto">Venda</Link>
+                                <Link to="/venda-produto">Funcionário</Link>
                             </Menu.Item>
                         </SubMenu>
                 </Menu>

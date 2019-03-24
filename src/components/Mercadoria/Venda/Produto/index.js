@@ -1,7 +1,33 @@
-import React from 'react';
+import React, { Component } from 'react';
 
-const VendaProduto = () => (
-    <h1>Tela de Venda de produto</h1>
-)
+import { Table } from 'antd';
 
-export default VendaProduto;
+import { bindActionCreators } from 'redux';
+import * as funcionarioAction from '../../../../store/actions/funcionarioAction';
+import { connect } from 'react-redux';
+
+const columns = [{
+  title: 'Nome',
+  dataIndex: 'nome',
+  key: 'name',
+}, {
+  title: 'CPF',
+  dataIndex: 'cpf',
+  key: 'cpf',
+}];
+
+class VendaProduto extends Component{
+
+    render(){
+        const funcionarios = this.props.funcionario;
+        return(
+          <div>
+            <Table dataSource={funcionarios} columns={columns} />           
+          </div>
+        )
+    }
+}
+
+const mapStateToProps = state => ({funcionario: state.funcionario,})
+const mapDispatchToProps = dispatch => bindActionCreators(funcionarioAction,dispatch)
+export default connect(mapStateToProps,mapDispatchToProps)(VendaProduto);
